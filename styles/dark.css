@@ -16,6 +16,7 @@
   --text-accent-color: #FF0070;
   --text-heading-color: #000028;
   --accent-color-opacity: rgba(255, 0, 112, 0.40);
+  --header-color-shadow: #FF0070;
 
   background-image: url(../images/cover-image-dark.png);
 }
@@ -53,6 +54,7 @@
     --text-accent-color: #FF0070;
     --text-heading-color: #000028;
     --accent-color-opacity: rgba(255, 0, 112, 0.40);
+    --header-color-shadow: #FF0070;
   }
 
   .page {
