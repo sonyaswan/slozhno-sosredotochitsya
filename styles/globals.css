@@ -18,11 +18,13 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+div {
   margin: 0;
 }
 
-ul {
+ul,
+ol {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -33,10 +35,23 @@ picture {
   padding: 0;
 }
 
+img {
+  width: 100%;
+}
+
 button,
 a {
   color: currentColor;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+}
+
+button:focus,
+a:focus {
+  outline: none;
+}
+
+button:disabled {
+  pointer-events: none;
 }

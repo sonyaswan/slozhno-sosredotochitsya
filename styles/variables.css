@@ -2,3 +2,28 @@
   Переменные для вашего проекта
   и их переопределение под различные устройства
 */
+
+:root {
+  --backgroung-color: #000028;
+  --accent-color: #FF0070;
+  --header-color: #DB00FF;
+  --text-base-color: #F1B2CE;
+  --text-accent-color: #FF0070;
+  --text-heading-color: #000028;
+  --accent-color-opacity: rgba(255, 0, 112, 0.40);
+  --header-color-shadow: #FF0070;
+
+  --font-base: 'IBM Plex mono';
+
+  --padding-and-gap: clamp(10px, 100vw * 10 / 393 - 375px * 10 / 393 + 10px, 20px); /*линейная функция по 2 точкам*/
+  --screen-block-size: 100vh;
+  --heading-font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+}
+
+@media (width > 768px) {
+  body {
+    --heading-font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+
+
