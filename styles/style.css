@@ -109,7 +109,7 @@
   cursor: pointer;
 }
 
-.header__theme-menu-button:focus-visible{
+.header__theme-menu-button:focus-visible {
   border-block-end-color: var(--text-accent-color, #f00);
   outline: transparent;
 }
