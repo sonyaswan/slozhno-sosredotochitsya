@@ -21,8 +21,7 @@
   background-image: url(../images/cover-image-light.png);
 }
 
-@media (width >= 1024px)
-{
+@media (width >= 1024px) {
   .page.theme_light {
    --header-color-shadow: #FF0070; /*возможно это ошибка дизайнера и не надо менять цвет в зависимости от размера */
  }
@@ -41,8 +40,7 @@
 
   }
 
-  @media (width >= 1024px)
-   {
+  @media (width >= 1024px) {
     body {
       --header-color-shadow: #FF0070; /*возможно это ошибка дизайнера и не надо менять цвет в зависимости от размера */
     }
