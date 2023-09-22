@@ -21,14 +21,18 @@
   background-image: url(../images/cover-image-light.png);
 }
 
+.theme_light .decorated-zone__decoration {
+  display: none;
+}
+
 @media (width >= 1024px) {
   .page.theme_light {
-   --header-color-shadow: #FF0070; /*возможно это ошибка дизайнера и не надо менять цвет в зависимости от размера */
+    --header-color-shadow: #FF0070; /*возможно это ошибка дизайнера и не надо менять цвет в зависимости от размера */
  }
 }
 
 @media (prefers-color-scheme: light) {
-  body {
+  .page {
     --backgroung-color: #FFF1F7;
     --accent-color: #FF8DCB;
     --header-color: #FFC2E6;
@@ -38,16 +42,17 @@
     --accent-color-opacity: rgba(50, 49, 45, 0.40);
     --header-color-shadow: #FF8DCB;
 
+    background-image: url(../images/cover-image-light.png);
   }
 
   @media (width >= 1024px) {
-    body {
-      --header-color-shadow: #FF0070; /*возможно это ошибка дизайнера и не надо менять цвет в зависимости от размера */
+    .page {
+      --header-color-shadow: #FF0070;
     }
-   }
+  }
 
-  .page {
-    background-image: url(../images/cover-image-light.png);
+  .decorated-zone__decoration {
+    display: none;
   }
 }
 

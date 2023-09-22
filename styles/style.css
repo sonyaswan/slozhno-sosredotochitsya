@@ -5,7 +5,6 @@
 
 /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
 .page {
-  margin: auto;
   color: var(--text-base-color, #fff);
   font-family: var(--font-base), sans-serif;
   font-weight: 400;
@@ -22,13 +21,25 @@
 }
 
 .link {
+  position: relative;
   text-decoration: none;
-  text-shadow: 1px 1px 0 var(--accent-color, #FF0070);
+  text-shadow: 2px 2px 0 var(--accent-color, #FF0070);
 }
 
 .link:hover {
-  text-decoration: underline;
   cursor: pointer;
+}
+
+/* для реализации подчеркивания ссылки при наведении без тени от стиля текста сделан пресвдоэлемент */
+.link:hover::after {
+  content: '';
+  position: absolute;
+  border: none;
+  background-color: var(--text-base-color, #fff);
+  inset-inline-start: 0;
+  inset-block-end: 0;
+  block-size: 1px;
+  inline-size: 100%;
 }
 
 .link:focus-visible {
@@ -65,6 +76,31 @@
 
 .decorated-zone__decoration {
   position: absolute;
+  top: var(--padding-and-gap, 10px);
+  right: var(--padding-and-gap, 10px);
+  display: none;
+  block-size: 25px;
+  inline-size: 60px;
+}
+
+.decorated-zone__decoration::before {
+  content: 'REC';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color, #f00);
+  line-height: 1.389; /* 25px; 138.889% */
+}
+
+.decorated-zone__decoration::after {
+  content: '';
+  position: absolute;
+  right: 9px;
+  top: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 3px var(--accent-color, #f00);
+  background-color: var(--accent-color, #f00);
 }
 
 .header {
@@ -114,15 +150,22 @@
   outline: transparent;
 }
 
-.header__heading {
-  position: relative;
-  left: clamp(-20px, 375px * 20 / 393 - 100vw * 20 / 393, 0px); /*с ширины = 768px нет отступа по макету*/
+.heading {
   color: var(--header-color, #DB00FF);
   font-weight: 700;
   font-size: var(--heading-font-size, 116px);
   font-style: normal;
   line-height: 0.825; /*82.5% */
   text-shadow: 4px 4px 0 var(--header-color-shadow, #FF0070);
+}
+
+.heading_in_header {
+  position: relative;
+  left: clamp(-20px, 375px * 20 / 393 - 100vw * 20 / 393, 0px); /*с ширины = 768px нет отступа по макету*/
+}
+
+.heading_in_footer {
+  text-shadow: 2px 2px 0 var(--header-color-shadow, #FF0070); /* расположение тени другое */
 }
 
 .header__description {
@@ -143,6 +186,14 @@
   font-weight: 400;
 }
 
+.title-great {
+  color: var(--text-accent-color, #f00);
+  font-weight: 700;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 1.3; /* 23.4px; 130% */
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -156,45 +207,25 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
   grid-auto-flow: row;
-  gap: 20px;
   grid-template-areas:
     "header"
     "content";
+  gap: 20px;
 }
 
-.section_recommendations {
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "header"
-    "content"
-    "pictures";
+.section_type_one-column-low-level{
+  gap: var(--padding-and-gap, 10px);
 }
 
 .section__name {
-  color: var(--text-accent-color, #f00);
-  font-weight: 700;
-  font-size: 18px;
-  font-style: normal;
-  line-height: 1.3; /* 23.4px; 130% */
   grid-area: header;
 }
 
 .section__content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   grid-area: content;
-}
-
-.section__pictures {
-  display: flex;
-  flex-direction: column;
-  gap: var(--padding-and-gap, 10px);
-  grid-area: pictures;
-}
-
-.section__element-additional-margin {
-  margin-block-start: calc(clamp(50px, 100vw * 30 / 393 - 375px * 30 / 393 + 50px, 80px) - 20px); /* = main gap - section gap */
+  gap: 20px;
 }
 
 .card-list {
@@ -212,7 +243,8 @@
 .pictures-list {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto-fit, min-content);
+  grid-template-rows: auto;
+  grid-auto-flow: row dense;
   gap: var(--padding-and-gap, 10px);
 }
 
@@ -232,50 +264,39 @@
   min-block-size: max(var(--screen-block-size, 668px), 668px);
 }
 
-.footer__heading {
-  color: var(--header-color, #DB00FF);
-  font-weight: 700;
-  font-size: var(--heading-font-size, 116px);
-  font-style: normal;
-  line-height: 0.825; /*82.5% */
-  text-shadow: 2px 2px 0 var(--header-color-shadow, #FF0070);
-}
-
 @media (width >= 768px) {
   .section {
     grid-template-columns: 1fr 2fr;
     grid-template-rows: auto;
     grid-template-areas:
-      "header content"
+      "header content";
   }
 
-  .section_what {
+  .section_type_one-column-high-level {
     grid-template-rows: auto auto;
     grid-template-areas:
       "header ."
-      "content content"
+      "content content";
   }
 
-  .section_recommendations {
+  .section_type_one-column-low-level{
     grid-template-rows: auto auto;
     grid-template-areas:
-      "header content"
-      "pictures pictures"
+      "header header"
+      "content content";
   }
 
   .pictures-list {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .pictures-list__item_horizontal {
-    grid-column: span 2
+  .pictures-list__item_direction_horizontal {
+    grid-column: span 2;
   }
 
-  .pictures-list__item_vertical {
-    grid-row: span 2
+  .pictures-list__item_direction_vertical {
+    grid-row: span 2;
   }
-
 }
 
 @media (width >= 1024px) {
@@ -292,7 +313,7 @@
     grid-template-columns: calc((100% - 2 * 20px) / 3) 1fr; /*первая колонка = 1/3 от всей ширины - два гапа, аналогично размеру 1fr при расположении в три колонки */
   }
 
-  .card-list_horizontal {
+  .card-list_direction_horizontal {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
