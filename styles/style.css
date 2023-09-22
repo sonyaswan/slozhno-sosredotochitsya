@@ -213,7 +213,7 @@
   gap: 20px;
 }
 
-.section_type_one-column-low-level{
+.section_type_one-column-low-level {
   gap: var(--padding-and-gap, 10px);
 }
 
@@ -279,7 +279,7 @@
       "content content";
   }
 
-  .section_type_one-column-low-level{
+  .section_type_one-column-low-level {
     grid-template-rows: auto auto;
     grid-template-areas:
       "header header"
